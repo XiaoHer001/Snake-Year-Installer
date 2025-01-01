@@ -2,6 +2,6 @@
 
 ---
 
-![游戏开始界面](https://github.com/user-attachments/assets/09c0f59f-8c01-4098-bd99-629f136097dc)
+![游戏开始界面](https://github.com/user-attachments/assets/b193fbb7-5906-40a4-a80b-365d0304c470)
 
 ---
