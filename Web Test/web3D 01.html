@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./lib/three.js"></script>
+    <script>
+        // 创建3D场景
+        var scene = new THREE.Scene();
+        // 创建透视摄像机 参数：视野角度75度 相机画面的宽高比（浏览器窗口的宽高比） 近裁剪面0.1 远裁剪面1000单位是米
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // 渲染器
+        var renderer = new THREE.WebGLRenderer();
+        // 设置渲染器的大小 宽高还是浏览器窗口的宽高
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        // 加载渲染器
+        document.body.appendChild(renderer.domElement);
+
+        // 方块几何体 Three里的方块模版创建 长 1 米 宽 1 米 高 1 米
+        var geometry = new THREE.BoxGeometry(1, 1, 1);
+        // 方块材质 颜色 0xff0000 红色 前两个字节ff 代表红色 中间两个字节00 代表绿色 最后两个字节00 代表蓝色
+        var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        // 组合成方块模型
+        var cube = new THREE.Mesh(geometry, material);
+        // 加入场景
+        scene.add(cube);
+        // 相机的Z轴向后移10米
+        camera.position.z = 10;
+
+
+        function renderscene(){
+            // 自己疯狂的调用自己 每秒60帧
+            requestAnimationFrame(renderscene);
+            renderer.render(scene,camera);
+            // 让方块每次旋转一点点
+            cube.rotation.y += 0.1;
+        }
+        // 调用
+        renderscene();
+    </script>
+</body>
+</html>
